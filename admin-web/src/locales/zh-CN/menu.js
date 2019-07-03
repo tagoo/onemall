@@ -41,7 +41,7 @@ export default {
   // admin
   'menu.admin': '系统设置',
   'menu.admin.admin-list': '管理员列表',
-  'menu.admin.resource-list': '资源列表',
+  'menu.admin.resource-list': '权限列表',
   'menu.admin.role-list': '角色列表',
   'menu.admin.dictionary-list': '数据字典',
   // 商品相关
@@ -50,19 +50,27 @@ export default {
   'menu.product.product-spu-add': '商品添加',
   'menu.product.product-spu-update': '商品编辑',
   'menu.product.product-category-list': '商品分类',
+  'menu.product.product-brand-list': '商品品牌',
   // 订单
   'menu.order': '订单管理',
   'menu.order.order-list': '订单管理',
   'menu.order.order-refunds': '退货维权',
   // 营销相关
+  'menu.promotion': '首页管理',
   'menu.promotion.promotion-banner-list': '首页广告',
   'menu.promotion.product-recommend-list': '商品推荐',
   'menu.promotion.coupon-card-template-list': '优惠劵管理',
   'menu.promotion.time-limit-discount-list': '限时折扣',
   'menu.promotion.full-privilege-list': '满减送',
   // 会员相关
+  'menu.user': '会员管理',
   'menu.user.user-list': '会员资料',
   // 支付相关
+  'menu.pay': '支付管理',
   'menu.pay.pay-transaction-list': '支付单',
   'menu.pay.pay-refund-list': '退款单',
+  // 短信服务
+  'menu.sms': '短信服务',
+  'menu.sms.sign-list': '签名模板',
+  'menu.sms.template-list': '短信模板',
 };

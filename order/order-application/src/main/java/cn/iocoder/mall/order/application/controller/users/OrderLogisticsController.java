@@ -3,7 +3,7 @@ package cn.iocoder.mall.order.application.controller.users;
 import cn.iocoder.common.framework.util.ServiceExceptionUtil;
 import cn.iocoder.common.framework.vo.CommonResult;
 import cn.iocoder.mall.admin.api.DataDictService;
-import cn.iocoder.mall.admin.api.bo.DataDictBO;
+import cn.iocoder.mall.admin.api.bo.datadict.DataDictBO;
 import cn.iocoder.mall.order.api.OrderLogisticsService;
 import cn.iocoder.mall.order.api.bo.OrderLogisticsInfoBO;
 import cn.iocoder.mall.order.api.bo.OrderLogisticsInfoWithOrderBO;
@@ -35,8 +35,9 @@ import java.util.stream.Collectors;
 @Api(description = "订单物流信息")
 public class OrderLogisticsController {
 
-    @Reference(validation = "true")
+    @Reference(validation = "true", version = "${dubbo.provider.OrderLogisticsService.version}")
     private OrderLogisticsService orderLogisticsService;
+
     @Reference(validation = "true", version = "${dubbo.consumer.DataDictService.version}")
     private DataDictService dataDictService;
 

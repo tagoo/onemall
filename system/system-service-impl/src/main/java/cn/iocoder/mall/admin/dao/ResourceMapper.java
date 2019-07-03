@@ -1,6 +1,9 @@
 package cn.iocoder.mall.admin.dao;
 
+import cn.iocoder.common.framework.mybatis.QueryWrapperX;
 import cn.iocoder.mall.admin.dataobject.ResourceDO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -8,26 +11,26 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface ResourceMapper {
+public interface ResourceMapper extends BaseMapper<ResourceDO> {
 
-    ResourceDO selectByTypeAndHandler(@Param("type") Integer type,
-                                      @Param("handler") String handler);
-
+    // TODO 芋艿，后续改造。
     List<ResourceDO> selectListByTypeAndRoleIds(@Param("type") Integer type,
                                                 @Param("roleIds") Set<Integer> roleIds);
 
-    List<ResourceDO> selectListByType(@Param("type") Integer type);
+    default List<ResourceDO> selectListByPermission(String permission) {
+        return selectList(new QueryWrapperX<ResourceDO>().like("permissions", permission));
+    }
 
-    ResourceDO selectByName(@Param("name") String name);
+    default List<ResourceDO> selectListByType(Integer type) {
+        return selectList(new QueryWrapperX<ResourceDO>().eqIfPresent("type", type));
+    }
 
-    ResourceDO selectById(@Param("id") Integer id);
+    default List<ResourceDO> selectListByIds(Set<Integer> ids) {
+        return selectList(new QueryWrapper<ResourceDO>().in("id", ids));
+    }
 
-    List<ResourceDO> selectListByIds(@Param("ids") Set<Integer> ids);
-
-    void insert(ResourceDO resource);
-
-    int update(ResourceDO resource);
-
-    int selectCountByPid(@Param("pid") Integer pid);
+    default int selectCountByPid(Integer pid) {
+        return selectCount(new QueryWrapper<ResourceDO>().eq("pid", pid));
+    }
 
 }

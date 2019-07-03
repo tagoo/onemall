@@ -2,7 +2,7 @@ package cn.iocoder.mall.order.application.controller.users;
 
 import cn.iocoder.common.framework.vo.CommonResult;
 import cn.iocoder.mall.admin.api.DataDictService;
-import cn.iocoder.mall.admin.api.bo.DataDictBO;
+import cn.iocoder.mall.admin.api.bo.datadict.DataDictBO;
 import cn.iocoder.mall.order.api.OrderReturnService;
 import cn.iocoder.mall.order.api.bo.OrderReturnInfoBO;
 import cn.iocoder.mall.order.api.constant.DictKeyConstants;
@@ -25,8 +25,9 @@ import java.util.List;
 @RequestMapping("users/order_return")
 public class OrderReturnController {
 
-    @Reference(validation = "true")
+    @Reference(validation = "true", version = "${dubbo.provider.OrderReturnService.version}")
     private OrderReturnService orderReturnService;
+
     @Reference(validation = "true", version = "${dubbo.consumer.DataDictService.version}")
     private DataDictService dataDictService;
 

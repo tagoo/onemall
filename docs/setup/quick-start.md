@@ -1,3 +1,7 @@
+> 艿艿：本文暂时会写的比较简洁，如果有不懂的地方，请来[「交流群」](http://www.iocoder.cn/mall-user-group/?vip&gitee)，艿艿来帮你解决。
+>
+> 交流群，我们提供了我们自己在使用的开发环境，搭建调试环境会更简便。
+
 # 1. 概述
 
 > 艿艿：本文暂时会写的比较简洁，如果有不懂的地方，请来[「交流群」](http://www.iocoder.cn/mall-user-group/?vip&gitee)，艿艿来帮你解决。
@@ -48,7 +52,7 @@ spring:
 ① 安装 Zookeeper
 
 * Windows ：参考 [《Windows 下 ZooKeeper 的配置和启动步骤 —— 单机模式》](https://www.jianshu.com/p/66857cbccbd3)
-* Mac ：参考 [《Mac 下安装与配置 MySQL》](https://www.jianshu.com/p/a8e4068a7a8a)
+* Mac ：参考 [《Zookeeper 安装及配置（Mac）》](https://www.jianshu.com/p/0ba61bf7149f)
 
 ② 修改项目中的 Zookeeper 配置
 
@@ -126,6 +130,8 @@ TODO 芋艿，需要完善
 * Windows ：参考 [《ElasticSearch 入门 第一篇：Windows 下安装ElasticSearch》](http://www.cnblogs.com/ljhdo/p/4887557.html)
 * Mac ：参考 [《mac 安装 ElasticSearch 笔记》](https://www.jianshu.com/p/81b0b3a60c01)
 
+因为需要中文分词，所以需要安装 [elasticsearch-analysis-ik](https://github.com/medcl/elasticsearch-analysis-ik) 插件。
+
 ② 修改项目中的 Elasticsearch 配置
 
 在 IDEA 中，搜索`search-service-impl` 项目下的 `application.yaml` 文件，将 Elasticsearch 配置修改成连接你的。如下：
@@ -149,15 +155,15 @@ spring:
 
 具体的启动顺序，是：
 
-* AdminApplication
+* SystemApplication
 * UserApplication
 * ProductApplication
 * PayApplication
     > 因为支付服务，涉及三方支付平台的配置。所以，需要艿艿后续提供简便的方案。TODO
 
 * PromotionApplication
-* SearchApplication
 * OrderApplication
+* SearchApplication
 
 # 9. 启动前端项目
 

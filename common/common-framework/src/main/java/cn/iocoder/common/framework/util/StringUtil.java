@@ -34,5 +34,4 @@ public class StringUtil {
     public static String substring(String str, int start) {
         return org.apache.commons.lang3.StringUtils.substring(str, start);
     }
-
 }

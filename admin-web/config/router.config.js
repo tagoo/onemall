@@ -115,6 +115,11 @@ export default [
             name: 'product-category-list',
             component: './Product/ProductCategoryList',
           },
+          {
+            path: '/product/product-brand-list',
+            name: 'product-brand-list',
+            component: './Product/ProductBrandList',
+          },
         ],
       },
       // promotion
@@ -152,7 +157,7 @@ export default [
             path: '/promotion/full-privilege-list',
             name: 'full-privilege-list',
             component: './Promotion/FullPrivilegeList',
-          }
+          },
         ],
       },
       // pay
@@ -170,6 +175,24 @@ export default [
             path: '/pay/refund-list',
             name: 'pay-refund-list',
             component: './Pay/PayRefundList',
+          },
+        ],
+      },
+      // sms
+      {
+        path: '/sms',
+        name: 'sms',
+        icon: 'user',
+        routes: [
+          {
+            path: '/sms/sign-list',
+            name: 'sign-list',
+            component: './Sms/SignList',
+          },
+          {
+            path: '/sms/template-list',
+            name: 'template-list',
+            component: './Sms/TemplateList',
           },
         ],
       },

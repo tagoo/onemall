@@ -4,7 +4,7 @@ import cn.iocoder.common.framework.constant.DeletedStatusEnum;
 import cn.iocoder.common.framework.util.ServiceExceptionUtil;
 import cn.iocoder.common.framework.vo.CommonResult;
 import cn.iocoder.mall.admin.api.DataDictService;
-import cn.iocoder.mall.admin.api.bo.DataDictBO;
+import cn.iocoder.mall.admin.api.bo.datadict.DataDictBO;
 import cn.iocoder.mall.order.api.OrderLogisticsService;
 import cn.iocoder.mall.order.api.OrderReturnService;
 import cn.iocoder.mall.order.api.bo.OrderLastLogisticsInfoBO;
@@ -21,7 +21,7 @@ import cn.iocoder.mall.order.biz.dataobject.OrderDO;
 import cn.iocoder.mall.order.biz.dataobject.OrderItemDO;
 import cn.iocoder.mall.order.biz.dataobject.OrderReturnDO;
 import cn.iocoder.mall.pay.api.PayRefundService;
-import cn.iocoder.mall.pay.api.dto.PayRefundSubmitDTO;
+import cn.iocoder.mall.pay.api.dto.refund.PayRefundSubmitDTO;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,7 @@ import java.util.UUID;
  * @time 2019-03-30 15:35
  */
 @Service
-@org.apache.dubbo.config.annotation.Service(validation = "true")
+@org.apache.dubbo.config.annotation.Service(validation = "true", version = "${dubbo.provider.OrderReturnService.version}")
 public class OrderReturnServiceImpl implements OrderReturnService {
 
     @Autowired

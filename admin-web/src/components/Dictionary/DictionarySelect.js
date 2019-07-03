@@ -4,7 +4,17 @@ import DictionaryContext from './DictionaryContext';
 
 export default class DictionarySelect extends PureComponent {
   renderSelect(children) {
-    return <Select {...this.props}>{children}</Select>;
+    // const { initialValue } = this.props['data-__meta'];
+    const propsX = {
+      ...this.props,
+    };
+    if (propsX.value !== undefined || propsX.value !== null) {
+      propsX.value = `${propsX.value}`;
+    }
+    if (propsX.value === 'undefined' || propsX.value === 'null') {
+      delete propsX.value;
+    }
+    return <Select {...propsX}>{children}</Select>;
   }
 
   render() {

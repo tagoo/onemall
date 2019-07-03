@@ -1,6 +1,14 @@
 spring:
   application:
     name: search-application
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:12088
+      metric:
+        charset: UTF-8
+      eager: false
 
 # server
 server:
@@ -10,3 +18,12 @@ server:
 
 swagger:
   enable: false
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,prometheus
+    metrics:
+      enabled: true

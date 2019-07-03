@@ -1,32 +1,73 @@
 package cn.iocoder.mall.admin.api;
 
-import cn.iocoder.common.framework.constant.CommonStatusEnum;
-import cn.iocoder.common.framework.validator.InEnum;
-import cn.iocoder.common.framework.vo.CommonResult;
-import cn.iocoder.mall.admin.api.bo.AdminBO;
-import cn.iocoder.mall.admin.api.bo.AdminPageBO;
-import cn.iocoder.mall.admin.api.dto.AdminAddDTO;
-import cn.iocoder.mall.admin.api.dto.AdminPageDTO;
-import cn.iocoder.mall.admin.api.dto.AdminUpdateDTO;
+import cn.iocoder.common.framework.vo.PageResult;
+import cn.iocoder.mall.admin.api.bo.admin.AdminAuthenticationBO;
+import cn.iocoder.mall.admin.api.bo.admin.AdminAuthorizationBO;
+import cn.iocoder.mall.admin.api.bo.admin.AdminBO;
+import cn.iocoder.mall.admin.api.bo.role.RoleBO;
+import cn.iocoder.mall.admin.api.dto.admin.*;
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 管理员 Service 接口
  */
 public interface AdminService {
 
-    CommonResult<AdminPageBO> getAdminPage(AdminPageDTO adminPageDTO);
+    /**
+     * 管理员认证。认证成功后，返回认证信息
+     *
+     * 实际上，就是用户名 + 密码登陆
+     *
+     * @param adminAuthenticationDTO 用户认证信息
+     * @return 认证信息
+     */
+    AdminAuthenticationBO authentication(AdminAuthenticationDTO adminAuthenticationDTO);
 
-    CommonResult<AdminBO> addAdmin(Integer adminId, AdminAddDTO adminAddDTO);
+    PageResult<AdminBO> getAdminPage(AdminPageDTO adminPageDTO);
 
-    CommonResult<Boolean> updateAdmin(Integer adminId, AdminUpdateDTO adminUpdateDTO);
+    AdminBO addAdmin(Integer adminId, AdminAddDTO adminAddDTO);
 
-    CommonResult<Boolean> updateAdminStatus(Integer adminId, Integer updateAdminId,
-                                            @InEnum(value = CommonStatusEnum.class, message = "修改状态必须是 {value}") Integer status);
+    Boolean updateAdmin(Integer adminId, AdminUpdateDTO adminUpdateDTO);
 
-    CommonResult<Boolean> deleteAdmin(Integer adminId, Integer updateAdminId);
+    Boolean updateAdminStatus(Integer adminId, AdminUpdateStatusDTO adminUpdateStatusDTO);
 
-    CommonResult<Boolean> assignRole(Integer adminId, Integer updateAdminId, Set<Integer> roleIds);
+    Boolean deleteAdmin(Integer adminId, Integer updateAdminId);
+
+    /**
+     * 批量查询每个管理员拥有的角色
+     *
+     * @param adminIds 管理员编号数组
+     * @return 每个管理员拥有的角色
+     */
+    Map<Integer, Collection<RoleBO>> getAdminRolesMap(Collection<Integer> adminIds);
+
+    /**
+     * 获得指定管理员拥有的角色数组
+     *
+     * @param adminId 指定管理员
+     * @return 角色编号数组
+     */
+    List<RoleBO> getRoleList(Integer adminId);
+
+    /**
+     * 分配管理员角色
+     *
+     * @param adminId 操作管理员编号
+     * @param adminAssignRoleDTO 分配信息
+     * @return 是否成功。目前，默认返回 true
+     */
+    Boolean assignAdminRole(Integer adminId, AdminAssignRoleDTO adminAssignRoleDTO);
+
+    /**
+     * 判断管理员是否有指定权限
+     *
+     * @param adminId 管理员
+     * @param permissions 权限数组
+     * @return 管理员授权信息
+     */
+    AdminAuthorizationBO checkPermissions(Integer adminId, List<String> permissions);
 
 }

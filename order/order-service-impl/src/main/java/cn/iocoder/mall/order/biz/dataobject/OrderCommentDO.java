@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 /**
  * 订单评论表
  *
- * @author wtz
+ * @author  wtz
  * @time 2019-05-14 20:48
  *
  */
@@ -18,12 +18,12 @@ import lombok.experimental.Accessors;
 public class OrderCommentDO extends BaseDO {
 
     /**
-     * 评论id
+     * 评论 id // TODO FROM 芋艿 TO wtz 中英文之间，要有空格
      */
     private Integer id;
 
     /**
-     * 订单id
+     * 订单 id
      */
     private Integer orderId;
 
@@ -33,14 +33,34 @@ public class OrderCommentDO extends BaseDO {
     private String orderNo;
 
     /**
-     * 商品SKUid
+     * 商品 id
+     */
+    private Integer productSpuId;
+
+    /**
+     * 商品名称
+     */
+    private String productSpuName;
+
+    /**
+     * 商品 sku id
      */
     private Integer productSkuId;
 
     /**
-     * 商品SKU属性
+     * 商品 sku 属性
      */
     private String productSkuAttrs;
+
+    /**
+     * 商品 sku 价格
+     */
+    private Integer productSkuPrice;
+
+    /**
+     * 商品 sku url
+     */
+    private String productSkuPicUrl;
 
     /**
      * 用户id
@@ -83,9 +103,9 @@ public class OrderCommentDO extends BaseDO {
     private Integer replayCount;
 
     /**
-     * 点赞数
+     * 点赞数 // TODO FROM 芋艿 TO wtz collect 是收藏的意思，最好换个单词噢。
      */
-    private Integer collectCount;
+    private Integer likeCount;
 
     /**
      * 评论的内容
@@ -96,5 +116,10 @@ public class OrderCommentDO extends BaseDO {
      * 评论的图片地址
      */
     private String commentPics;
+
+    /**
+     * 订单评论状态
+     */
+    private Integer commentState;
 
 }

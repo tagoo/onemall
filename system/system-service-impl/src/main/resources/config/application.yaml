@@ -19,8 +19,18 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: cn.iocoder.mall.admin.dataobject
+
+# sms
+sms:
+  yunPian:
+    apiKey:
+  aliYun:
+    accessKeyId:
+    accessSecret:
 
 # dubbo
 dubbo:
@@ -47,3 +57,11 @@ dubbo:
       version: 1.0.0
     RoleService:
       version: 1.0.0
+    SmsService:
+      version: 1.0.0
+
+# logging
+logging:
+  level:
+    # dao 开启 debug 模式 mybatis 输入 sql
+    cn.iocoder.mall.admin.dao: debug

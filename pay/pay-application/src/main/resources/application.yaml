@@ -1,6 +1,14 @@
 spring:
   application:
     name: pay-application
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:12088
+      metric:
+        charset: UTF-8
+      eager: false
 
 # server
 server:
@@ -9,4 +17,16 @@ server:
     context-path: /pay-api/
 
 swagger:
-  enable: false
+  enable: true
+  title: 支付子系统
+  description: 支付子系统
+  version: 1.0.0
+  base-package: cn.iocoder.mall.pay.application.controller
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,prometheus
+    metrics:
+      enabled: true
